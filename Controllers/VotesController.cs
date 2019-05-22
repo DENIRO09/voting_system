@@ -246,9 +246,9 @@ namespace E_Lect.Controllers
                 WebMail.SmtpPort = 587;
                 WebMail.SmtpUseDefaultCredentials = true;
                 WebMail.EnableSsl = true;
-                WebMail.UserName = "denirophekoo@gmail.com";
-                WebMail.Password = "09091998";
-                WebMail.From = "denirophekoo@gmail.com";
+                WebMail.UserName = "";
+                WebMail.Password = "";
+                WebMail.From = "";
                 WebMail.Send(to: s.Student_Email, subject: "Dearest applicant : " + s.Student_Number, body: "Your vote through the E-Lect online voting application has been successful. Please go ahead and share our apllication. Help a brother out. We appreciate your use of E-Lect. Voting is made easy through E-Lect.Viva E-Lect Viva! \n" + "Yours Gratefully \n" + "The E-Lect Team", isBodyHtml: true);
             }
             catch (Exception)

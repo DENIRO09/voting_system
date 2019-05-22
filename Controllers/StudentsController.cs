@@ -195,8 +195,8 @@ namespace E_Lect.Controllers
                     WebMail.SmtpPort = 587;
                     WebMail.SmtpUseDefaultCredentials = true;
                     WebMail.EnableSsl = true;
-                    WebMail.UserName = "denirophekoo@gmail.com";
-                    WebMail.Password = "09091998";
+                    WebMail.UserName = "";
+                    WebMail.Password = "";
                     WebMail.From = "denirophekoo@gmail.com";
                     WebMail.Send(to: student.Student_Email, subject: "Good day applicant"+student.Student_Number, body: "Your registration, to the greatest voting app to be developed, has been successfully completed. Thank you for choosing E-Lect. You have made the right choice! if you keep making choices like this you are going places in life. \n"+"Thanking you Profoundly \n"+"The E-Lect Team", isBodyHtml: true);
                 }

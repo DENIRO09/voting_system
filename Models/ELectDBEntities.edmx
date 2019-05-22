@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ELectDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_Username" />
+          </Key>
+          <Property Name="Admin_Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_Password" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Admin_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_MidName" Type="varchar" MaxLength="50" />
+          <Property Name="Admin_Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_DOB" Type="datetime" Nullable="false" />
+          <Property Name="Admin_Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_RecoveryQ" Type="varchar" MaxLength="50" />
+          <Property Name="Admin_RecoveryA" Type="varchar" MaxLength="50" />
+          <Property Name="Admin_Image" Type="image" />
+          <Property Name="Admin_ImagePath" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Candidates">
+          <Key>
+            <PropertyRef Name="Candidate_ID" />
+          </Key>
+          <Property Name="Candidate_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Candidate_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Candidate_MidName" Type="varchar" MaxLength="50" />
+          <Property Name="Candidate_Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Candidate_StudentNumber" Type="int" Nullable="false" />
+          <Property Name="Candidate_Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Candidate_DOB" Type="datetime" Nullable="false" />
+          <Property Name="Candidate_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Candidate_Course" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Candidate_YearOfStudy" Type="int" Nullable="false" />
+          <Property Name="Candidate_Campus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Candidate_Position" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Candidate_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Candidate_TotalVotes" Type="int" />
+          <Property Name="Party_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Admin_Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Candidate_Image" Type="image" />
+          <Property Name="Candidate_ImagePath" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MockStudents">
+          <Key>
+            <PropertyRef Name="Stu_Num" />
+          </Key>
+          <Property Name="Stu_Num" Type="int" Nullable="false" />
+          <Property Name="Stu_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stu_Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stu_Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stu_DOB" Type="datetime" Nullable="false" />
+          <Property Name="Stu_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stu_Course" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stu_Campus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stu_YearOfStudy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="Party_Name" />
+          </Key>
+          <Property Name="Party_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Party_Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Party_NoOfCandidates" Type="int" />
+          <Property Name="Party_Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Party_TotalVotes" Type="int" />
+          <Property Name="Admin_Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Party_Image" Type="image" />
+          <Property Name="Party_ImagePath" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PostImage">
+          <Key>
+            <PropertyRef Name="PostImageID" />
+          </Key>
+          <Property Name="PostImageID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SaveImage">
+          <Key>
+            <PropertyRef Name="SaveImageID" />
+          </Key>
+          <Property Name="SaveImageID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_Number" />
+          </Key>
+          <Property Name="Student_Number" Type="int" Nullable="false" />
+          <Property Name="Student_Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_DOB" Type="datetime" Nullable="false" />
+          <Property Name="Student_Course" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_YearOfStudy" Type="int" Nullable="false" />
+          <Property Name="Student_Campus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_Voted" Type="varchar" MaxLength="50" />
+          <Property Name="Student_RecoveryQ" Type="varchar" MaxLength="50" />
+          <Property Name="Student_RecoveryA" Type="varchar" MaxLength="50" />
+          <Property Name="Student_Image" Type="image" />
+          <Property Name="Student_ImagePath" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Vote_ID" />
+          </Key>
+          <Property Name="Vote_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Party_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Candidate_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Student_Number" Type="int" Nullable="false" />
+          <Property Name="Vote_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VoteTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+        </EntityType>
+        <Association Name="FK_Candidates_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_Username" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="Admin_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Party">
+          <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Name" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="Party_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Party" Type="Self.Party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_Username" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="Admin_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+          <End Role="Vote" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="Candidate_ID" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="Candidate_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_Party">
+          <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+          <End Role="Vote" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Name" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="Party_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Vote" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Number" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="Student_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ELectDBModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidates" EntityType="Self.Candidates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MockStudents" EntityType="Self.MockStudents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostImage" EntityType="Self.PostImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaveImage" EntityType="Self.SaveImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoteTime" EntityType="Self.VoteTime" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Candidates_Admin" Association="Self.FK_Candidates_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Party" Association="Self.FK_Candidates_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Admin" Association="Self.FK_Party_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_Candidates" Association="Self.FK_Vote_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="Vote" EntitySet="Vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_Party" Association="Self.FK_Vote_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="Vote" EntitySet="Vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_Student" Association="Self.FK_Vote_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Vote" EntitySet="Vote" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ELectDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_Username" />
+          </Key>
+          <Property Name="Admin_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_MidName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Admin_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Admin_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_RecoveryQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Admin_RecoveryA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Admin_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Admin_ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Candidates" Relationship="ELectDBModel.FK_Candidates_Admin" FromRole="Admin" ToRole="Candidate" />
+          <NavigationProperty Name="Parties" Relationship="ELectDBModel.FK_Party_Admin" FromRole="Admin" ToRole="Party" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Candidate_ID" />
+          </Key>
+          <Property Name="Candidate_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Candidate_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Candidate_MidName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Candidate_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Candidate_StudentNumber" Type="Int32" Nullable="false" />
+          <Property Name="Candidate_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Candidate_DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Candidate_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Candidate_Course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Candidate_YearOfStudy" Type="Int32" Nullable="false" />
+          <Property Name="Candidate_Campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Candidate_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Candidate_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Candidate_TotalVotes" Type="Int32" />
+          <Property Name="Admin_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Candidate_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Candidate_ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Party_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="ELectDBModel.FK_Candidates_Admin" FromRole="Candidate" ToRole="Admin" />
+          <NavigationProperty Name="Party" Relationship="ELectDBModel.FK_Candidates_Party" FromRole="Candidate" ToRole="Party" />
+          <NavigationProperty Name="Votes" Relationship="ELectDBModel.FK_Vote_Candidates" FromRole="Candidate" ToRole="Vote" />
+        </EntityType>
+        <EntityType Name="MockStudent">
+          <Key>
+            <PropertyRef Name="Stu_Num" />
+          </Key>
+          <Property Name="Stu_Num" Type="Int32" Nullable="false" />
+          <Property Name="Stu_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stu_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stu_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stu_DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Stu_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stu_Course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stu_Campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stu_YearOfStudy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="Party_Name" />
+          </Key>
+          <Property Name="Party_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Party_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Party_NoOfCandidates" Type="Int32" />
+          <Property Name="Party_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Party_TotalVotes" Type="Int32" />
+          <Property Name="Admin_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Party_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Party_ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="ELectDBModel.FK_Party_Admin" FromRole="Party" ToRole="Admin" />
+          <NavigationProperty Name="Candidates" Relationship="ELectDBModel.FK_Candidates_Party" FromRole="Party" ToRole="Candidate" />
+          <NavigationProperty Name="Votes" Relationship="ELectDBModel.FK_Vote_Party" FromRole="Party" ToRole="Vote" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_Number" />
+          </Key>
+          <Property Name="Student_Number" Type="Int32" Nullable="false" />
+          <Property Name="Student_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Student_Course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_YearOfStudy" Type="Int32" Nullable="false" />
+          <Property Name="Student_Campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Voted" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Student_RecoveryQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Student_RecoveryA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Student_Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Student_ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Votes" Relationship="ELectDBModel.FK_Vote_Student" FromRole="Student" ToRole="Vote" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Vote_ID" />
+          </Key>
+          <Property Name="Vote_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Candidate_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Number" Type="Int32" Nullable="false" />
+          <Property Name="Vote_Date" Type="DateTime" Precision="3" />
+          <Property Name="Party_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Candidate" Relationship="ELectDBModel.FK_Vote_Candidates" FromRole="Vote" ToRole="Candidate" />
+          <NavigationProperty Name="Party" Relationship="ELectDBModel.FK_Vote_Party" FromRole="Vote" ToRole="Party" />
+          <NavigationProperty Name="Student" Relationship="ELectDBModel.FK_Vote_Student" FromRole="Vote" ToRole="Student" />
+        </EntityType>
+        <EntityContainer Name="ELectDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+          <EntitySet Name="MockStudents" EntityType="Self.MockStudent" />
+          <EntitySet Name="Parties" EntityType="Self.Party" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Votes" EntityType="Self.Vote" />
+          <EntitySet Name="VoteTimes" EntityType="ELectDBModel.VoteTime" />
+          <AssociationSet Name="FK_Candidates_Admin" Association="ELectDBModel.FK_Candidates_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Admin" Association="ELectDBModel.FK_Party_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Party" EntitySet="Parties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_Party" Association="ELectDBModel.FK_Candidates_Party">
+            <End Role="Party" EntitySet="Parties" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_Candidates" Association="ELectDBModel.FK_Vote_Candidates">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="Vote" EntitySet="Votes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_Party" Association="ELectDBModel.FK_Vote_Party">
+            <End Role="Party" EntitySet="Parties" />
+            <End Role="Vote" EntitySet="Votes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_Student" Association="ELectDBModel.FK_Vote_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Vote" EntitySet="Votes" />
+          </AssociationSet>
+          <EntitySet Name="PostImages" EntityType="ELectDBModel.PostImage" />
+          <EntitySet Name="SaveImages" EntityType="ELectDBModel.SaveImage" />
+        </EntityContainer>
+        <EntityType Name="VoteTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_Candidates_Admin">
+          <End Type="ELectDBModel.Admin" Role="Admin" Multiplicity="1" />
+          <End Type="ELectDBModel.Candidate" Role="Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_Username" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="Admin_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_Admin">
+          <End Type="ELectDBModel.Admin" Role="Admin" Multiplicity="1" />
+          <End Type="ELectDBModel.Party" Role="Party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_Username" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="Admin_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_Party">
+          <End Type="ELectDBModel.Party" Role="Party" Multiplicity="0..1" />
+          <End Type="ELectDBModel.Candidate" Role="Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Name" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="Party_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_Candidates">
+          <End Type="ELectDBModel.Candidate" Role="Candidate" Multiplicity="1" />
+          <End Type="ELectDBModel.Vote" Role="Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="Candidate_ID" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="Candidate_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_Party">
+          <End Type="ELectDBModel.Party" Role="Party" Multiplicity="0..1" />
+          <End Type="ELectDBModel.Vote" Role="Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Party_Name" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="Party_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_Student">
+          <End Type="ELectDBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="ELectDBModel.Vote" Role="Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Number" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="Student_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PostImage">
+          <Key>
+            <PropertyRef Name="PostImageID" />
+          </Key>
+          <Property Name="PostImageID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SaveImage">
+          <Key>
+            <PropertyRef Name="SaveImageID" />
+          </Key>
+          <Property Name="SaveImageID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ELectDBModelStoreContainer" CdmEntityContainer="ELectDBEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ELectDBModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Admin_ImagePath" ColumnName="Admin_ImagePath" />
+                <ScalarProperty Name="Admin_Image" ColumnName="Admin_Image" />
+                <ScalarProperty Name="Admin_RecoveryA" ColumnName="Admin_RecoveryA" />
+                <ScalarProperty Name="Admin_RecoveryQ" ColumnName="Admin_RecoveryQ" />
+                <ScalarProperty Name="Admin_Username" ColumnName="Admin_Username" />
+                <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
+                <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+                <ScalarProperty Name="Admin_MidName" ColumnName="Admin_MidName" />
+                <ScalarProperty Name="Admin_Surname" ColumnName="Admin_Surname" />
+                <ScalarProperty Name="Admin_DOB" ColumnName="Admin_DOB" />
+                <ScalarProperty Name="Admin_Gender" ColumnName="Admin_Gender" />
+                <ScalarProperty Name="Admin_Email" ColumnName="Admin_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="ELectDBModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidates">
+                <ScalarProperty Name="Party_Name" ColumnName="Party_Name" />
+                <ScalarProperty Name="Candidate_ImagePath" ColumnName="Candidate_ImagePath" />
+                <ScalarProperty Name="Candidate_Image" ColumnName="Candidate_Image" />
+                <ScalarProperty Name="Admin_Username" ColumnName="Admin_Username" />
+                <ScalarProperty Name="Candidate_ID" ColumnName="Candidate_ID" />
+                <ScalarProperty Name="Candidate_Name" ColumnName="Candidate_Name" />
+                <ScalarProperty Name="Candidate_MidName" ColumnName="Candidate_MidName" />
+                <ScalarProperty Name="Candidate_Surname" ColumnName="Candidate_Surname" />
+                <ScalarProperty Name="Candidate_StudentNumber" ColumnName="Candidate_StudentNumber" />
+                <ScalarProperty Name="Candidate_Gender" ColumnName="Candidate_Gender" />
+                <ScalarProperty Name="Candidate_DOB" ColumnName="Candidate_DOB" />
+                <ScalarProperty Name="Candidate_Email" ColumnName="Candidate_Email" />
+                <ScalarProperty Name="Candidate_Course" ColumnName="Candidate_Course" />
+                <ScalarProperty Name="Candidate_YearOfStudy" ColumnName="Candidate_YearOfStudy" />
+                <ScalarProperty Name="Candidate_Campus" ColumnName="Candidate_Campus" />
+                <ScalarProperty Name="Candidate_Position" ColumnName="Candidate_Position" />
+                <ScalarProperty Name="Candidate_Status" ColumnName="Candidate_Status" />
+                <ScalarProperty Name="Candidate_TotalVotes" ColumnName="Candidate_TotalVotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MockStudents">
+            <EntityTypeMapping TypeName="ELectDBModel.MockStudent">
+              <MappingFragment StoreEntitySet="MockStudents">
+                <ScalarProperty Name="Stu_Num" ColumnName="Stu_Num" />
+                <ScalarProperty Name="Stu_Name" ColumnName="Stu_Name" />
+                <ScalarProperty Name="Stu_Surname" ColumnName="Stu_Surname" />
+                <ScalarProperty Name="Stu_Gender" ColumnName="Stu_Gender" />
+                <ScalarProperty Name="Stu_DOB" ColumnName="Stu_DOB" />
+                <ScalarProperty Name="Stu_Email" ColumnName="Stu_Email" />
+                <ScalarProperty Name="Stu_Course" ColumnName="Stu_Course" />
+                <ScalarProperty Name="Stu_Campus" ColumnName="Stu_Campus" />
+                <ScalarProperty Name="Stu_YearOfStudy" ColumnName="Stu_YearOfStudy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parties">
+            <EntityTypeMapping TypeName="ELectDBModel.Party">
+              <MappingFragment StoreEntitySet="Party">
+                <ScalarProperty Name="Party_ImagePath" ColumnName="Party_ImagePath" />
+                <ScalarProperty Name="Party_Image" ColumnName="Party_Image" />
+                <ScalarProperty Name="Admin_Username" ColumnName="Admin_Username" />
+                <ScalarProperty Name="Party_Name" ColumnName="Party_Name" />
+                <ScalarProperty Name="Party_Description" ColumnName="Party_Description" />
+                <ScalarProperty Name="Party_NoOfCandidates" ColumnName="Party_NoOfCandidates" />
+                <ScalarProperty Name="Party_Status" ColumnName="Party_Status" />
+                <ScalarProperty Name="Party_TotalVotes" ColumnName="Party_TotalVotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="ELectDBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Student_ImagePath" ColumnName="Student_ImagePath" />
+                <ScalarProperty Name="Student_Image" ColumnName="Student_Image" />
+                <ScalarProperty Name="Student_RecoveryA" ColumnName="Student_RecoveryA" />
+                <ScalarProperty Name="Student_RecoveryQ" ColumnName="Student_RecoveryQ" />
+                <ScalarProperty Name="Student_Voted" ColumnName="Student_Voted" />
+                <ScalarProperty Name="Student_Number" ColumnName="Student_Number" />
+                <ScalarProperty Name="Student_Password" ColumnName="Student_Password" />
+                <ScalarProperty Name="Student_Email" ColumnName="Student_Email" />
+                <ScalarProperty Name="Student_Gender" ColumnName="Student_Gender" />
+                <ScalarProperty Name="Student_DOB" ColumnName="Student_DOB" />
+                <ScalarProperty Name="Student_Course" ColumnName="Student_Course" />
+                <ScalarProperty Name="Student_YearOfStudy" ColumnName="Student_YearOfStudy" />
+                <ScalarProperty Name="Student_Campus" ColumnName="Student_Campus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Votes">
+            <EntityTypeMapping TypeName="ELectDBModel.Vote">
+              <MappingFragment StoreEntitySet="Vote">
+                <ScalarProperty Name="Party_Name" ColumnName="Party_Name" />
+                <ScalarProperty Name="Vote_Date" ColumnName="Vote_Date" />
+                <ScalarProperty Name="Vote_ID" ColumnName="Vote_ID" />
+                <ScalarProperty Name="Candidate_ID" ColumnName="Candidate_ID" />
+                <ScalarProperty Name="Student_Number" ColumnName="Student_Number" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoteTimes">
+            <EntityTypeMapping TypeName="ELectDBModel.VoteTime">
+              <MappingFragment StoreEntitySet="VoteTime">
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostImages">
+            <EntityTypeMapping TypeName="ELectDBModel.PostImage">
+              <MappingFragment StoreEntitySet="PostImage">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PostImageID" ColumnName="PostImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaveImages">
+            <EntityTypeMapping TypeName="ELectDBModel.SaveImage">
+              <MappingFragment StoreEntitySet="SaveImage">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="SaveImageID" ColumnName="SaveImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

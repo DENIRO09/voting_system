@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "ADMIN | Index";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+<h2>Admin List</h2>
+
+<a class="btn btn-success" style="margin-bottom:10px" onclick="PopupForm('@Url.Action("Create","Admins")')"><i class="fa fa-plus"></i> Add New</a>
+<table id="adminTable" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>MidName</th>
+            <th>Surname</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        var Popup, dataTable;
+       $(document).ready(function () {
+           dataTable = $("#adminTable").DataTable({
+                "ajax": {
+                    "url": "/Admins/GetData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Admin_Name" },
+                    { "data": "Admin_MidName" },
+                    { "data": "Admin_Surname" },
+                    {
+                        "data": "Admin_DOB",
+                        "render": function (jsonDate) {
+                            var date = new Date(parseInt(jsonDate.substr(6)));
+                            var month = date.getMonth() + 1;
+                            return date.getDate() + "/" + month + "/" + date.getFullYear();
+                        }
+                    },
+                    { "data": "Admin_Gender" },
+                    {
+                        "data": "Admin_Email",
+                        "searchable": false,
+                        "sortable": false
+                    },
+                    { "data": "Admin_Username", "render" : function (data) {
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("Edit", "Admins")/"+ data +"')><i class= 'fa fa-pencil'></i> Edit</a> <a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete('"+ data +"')><i class= 'fa fa-trash'></i> Delete</a>";
+                    },
+                        "orderable": false,
+                        "searchable": false,
+                        "width" : "150px"
+                    }
+                ],
+                "language": {
+                    "emptyTable" : "No data found. Click on <b>Add New</b> button."
+                }
+
+            });
+       });
+
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: "Fill Admin Details",
+                    height: 500,
+                    width: 700,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+                });
+            });
+        }
+
+        function SubmitFrom(form) {
+            $.validator.unobtrusive.parse(form);
+
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+                        }
+                        else if (data.error) {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "error"
+                            })
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+
+       function Delete(id) {
+           if(confirm("Are you sure you want to delete this Admin?"))
+           {
+               $.ajax({
+                   type: "POST",
+                   url: '@Url.Action("Delete", "Admins")/' + id,
+                   success: function (data) {
+                       if (data.success)
+                       {
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                           })
+                       }
+                   }
+               });
+           }
+       }
+    </script>
+}
+<p>
+    @Html.ActionLink("Back", "AdminHome", "Home")
+</p>

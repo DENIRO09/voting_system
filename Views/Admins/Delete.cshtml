@@ -1,0 +1,93 @@
+﻿@model E_Lect.Models.Admin
+
+@{
+    ViewBag.Title = "ADMIN | Delete";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_MidName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_MidName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Email)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Admin_Recovery)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Admin_Recovery)
+            </dd>*@
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

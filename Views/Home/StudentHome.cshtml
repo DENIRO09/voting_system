@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "STUDENT | Home";
+
+    if (Session["Student_Number"] == null)
+    {
+        Response.Redirect("~/Login/StudentLogin");
+    }
+}
+
+<h2>Student Home</h2>
+
+<br /><br /><br /><br />
+
+
+<div class="option-content">
+    <br />
+    <a class="option" href="/Students/Details">View Profile</a>
+    <a class="option" href="/Candidates/_Index"> Candidates</a>
+</div>
+<br /><br />
+<div class="option-content">
+    <a class="option" href="/Parties/_Index">View Parties</a>
+    <a class="option" href="/Votes/Create">VOTE HERE</a>
+</div>
+<div>
+    <a href="/TotalVotesStuds/Index">Total Party Votes</a><br/><br/>
+    <a href="/Students/ViewModel">Active Candidates</a>
+</div>
+
+@*@Html.ActionLink("View Parties", "_Index", "Parties") |
+    @Html.ActionLink("View Candidates", "_Index", "Candidates") |
+    @Html.ActionLink("View Profile", "Details","Students")*@
+

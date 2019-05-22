@@ -1,0 +1,47 @@
+﻿
+@if (Session["Admin_Username"] == null)
+{
+
+    <ul class="nav navbar-nav navbar-right">
+        @*<li>@Html.ActionLink("Register", "Create", "Admins", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        @*<li>@Html.ActionLink("Log in", "AdminLogin", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+    </ul>
+}
+else
+{
+    using (Html.BeginForm("AdminLogOff", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + @Session["Admin_Username"].ToString() + "!", "Details", "Admins", routeValues: null, htmlAttributes: new { title = "Click to view " + @Session["Admin_Username"].ToString() })
+            </li>
+            <li><a href="@Url.Action("AdminLogOff", "Login")">Log off</a></li>
+        </ul>
+    }
+}
+
+@if (Session["Student_Number"] == null)
+{
+
+    <ul class="nav navbar-nav navbar-right">
+        @*<li>@Html.ActionLink("Register", "Create", "Admins", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        @*<li>@Html.ActionLink("Log in", "AdminLogin", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+    </ul>
+}
+else
+{
+    using (Html.BeginForm("StudentLogOff", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + @Session["Student_Number"].ToString() + "!", "Details", "Students", routeValues: null, htmlAttributes: new { title = "Click to view " + @Session["Student_Number"].ToString() })
+            </li>
+            <li><a href="@Url.Action("StudentLogOff", "Login")">Log off</a></li>
+        </ul>
+    }
+}

@@ -1,0 +1,92 @@
+﻿@model E_Lect.Models.ProductModel
+
+@{
+    ViewBag.Title = "Create";
+
+    if (Session["Student_Number"] == null)
+    {
+        Response.Redirect("~/Login/StudentLogin");
+    }
+}
+
+<h1 align="center" style="font-size:60px">BALLOT</h1>
+
+<label class="alert-success">@ViewBag.SuccessMessage</label>
+<label class="alert-danger">@ViewBag.DuplicateMessage</label>
+<label class="alert-danger">@ViewBag.ErrorMessage</label>
+
+@using (Html.BeginForm("Create", "Votes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    for (int i = 0; i < Model.Cand.Count; i++)
+    {
+        @Html.HiddenFor(model => model.Cand[i].Candidate_ID)
+        @Html.HiddenFor(model => model.Cand[i].Candidate_Name)
+        @Html.HiddenFor(model => model.Cand[i].Candidate_Surname)
+        @Html.HiddenFor(model => model.Cand[i].Candidate_Position)
+
+        <table class="cands">
+            <tr>
+                <td rowspan="5" style="padding:10px">
+
+                    @Html.CheckBoxFor(model => model.Cand[i].isChecked, new { @class = "check" })
+                </td>
+                <td rowspan="5">
+                    <img src="@Url.Action("RenderImage", "Candidates", new { id = Model.Cand[i].Candidate_ID })" width="80" height="50"/>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top:5px">
+                    @Html.DisplayName(Model.Cand[i].Candidate_ID)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayName(Model.Cand[i].Candidate_Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayName(Model.Cand[i].Candidate_Surname)
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-bottom:5px">
+                    @Html.DisplayName(Model.Cand[i].Candidate_Position)
+                </td>
+            </tr>
+        </table>
+
+    }
+}
+<br />
+    <div align="center">
+        <input type="submit" value="Cast Vote" class="cmn-t-pulse" />
+    </div>
+
+
+    <br /><br />
+    <div>
+        @Html.ActionLink("Back", "StudentHome", "Home")
+    </div>
+
+    @section scripts{
+
+        <script>
+            $(document).ready(function () {
+                $check = $(".check").change(function () {
+                    var minAllowed = 1; 
+                    var maxAllowed = 8;
+                    
+                    var cnt = $(".check:checked").length;
+                    if (cnt > maxAllowed) {
+                        $(this).prop("checked", "");
+                        alert('You can only select maximum ' + maxAllowed + ' candidates!!');
+                    }
+                    if (cnt < minAllowed) {
+                        $(this).prop("checked", "");
+                        alert('Please select a Candidate');
+                    }
+                });
+            });
+        </script>
+    }

@@ -1,0 +1,84 @@
+﻿@model E_Lect.Models.Party
+
+@{
+    ViewBag.Title = "PARTY | Delete";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <img src="@Url.Action("RenderImage","Parties",new { id = Model.Party_Name})" width="80" height="50" />
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Party_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Party_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Party_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Party_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Party_NoOfCandidates)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Party_NoOfCandidates)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Party_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Party_Status)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Party_TotalVotes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Party_TotalVotes)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin.Admin_Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.Admin_Username)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back", "Index", "Parties")
+        </div>
+    }
+</div>
+<p>
+
+</p>

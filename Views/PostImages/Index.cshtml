@@ -1,0 +1,28 @@
+﻿@model IEnumerable<E_Lect.Models.SaveImage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>View my experience</h2>
+
+<p>
+    @Html.ActionLink("Post your experience", "Create")
+</p>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           
+            <div class="form-group">
+                <img src="@Url.Action("RenderImage","PostImages",new { id = item.SaveImageID})" width="80" height="50" />
+            </div>
+        </td>
+       
+    </tr>
+}
+
+ <p>
+    @Html.ActionLink("Home", "Home","Home")
+ </p>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style media="screen" type="text/css">
+    div.table {
+        display: table;
+    }
+
+    div.row {
+        display: table-row;
+    }
+
+    div.cell {
+        display: table-cell;
+        width:500px;
+    }
+</style>
+
+<div class="table">
+    <div class="row">
+        <div class="cell">@{Html.RenderAction("ListCandidatePV");}</div>&nbsp;
+        <div class="cell">@{Html.RenderAction("ListPartyPV");}</div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Back", "AdminHome", "Home")
+</p>

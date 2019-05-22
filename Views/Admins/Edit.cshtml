@@ -1,0 +1,68 @@
+﻿@model E_Lect.Models.Admin
+
+@{
+    ViewBag.Title = "ADMIN | Edit";
+    Layout = null;
+
+    //if (Session["Admin_Username"] == null)
+    //{
+    //    Response.Redirect("~/Login/AdminLogin");
+    //}
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Admins", FormMethod.Post, new { onsubmit = "return SubmitFrom(this)" , enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Admin</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Admin_Username)
+
+        <h4 style="color:#0072ff">@Html.DisplayFor(model => model.Admin_Name) @Html.DisplayFor(model => model.Admin_Surname)</h4><br />
+
+        <div class="form-group">
+            <img src="@Url.Action("RenderImage","Admins",new { id = Model.Admin_Username})" width="100" height="50" />
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Admin_Image, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                <h4>Upload a Profile Picture</h4>
+                <input type="file" name="file" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm Password" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                <h6 style="font-size:smaller; color: #c60808">*Please confirm your password.</h6>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Admin_Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email Address" } })
+                @Html.ValidationMessageFor(model => model.Admin_Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Admin_Password)
+        @Html.HiddenFor(model => model.Admin_Name)
+        @Html.HiddenFor(model => model.Admin_MidName)
+        @Html.HiddenFor(model => model.Admin_Surname)
+        @Html.HiddenFor(model => model.Admin_DOB)
+        @Html.HiddenFor(model => model.Admin_Gender)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}

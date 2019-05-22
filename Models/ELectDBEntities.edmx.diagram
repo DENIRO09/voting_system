@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="00850b7613bb442497809c0ebc059ac8" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="ELectDBModel.Admin" Width="1.875" PointX="4.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELectDBModel.Candidate" Width="2.25" PointX="0.875" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELectDBModel.MockStudent" Width="1.5" PointX="11.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELectDBModel.Party" Width="2" PointX="7.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELectDBModel.Student" Width="1.75" PointX="7.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELectDBModel.Vote" Width="1.625" PointX="4.625" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELectDBModel.VoteTime" Width="1.5" PointX="0.75" PointY="7.75" />
+        <AssociationConnector Association="ELectDBModel.FK_Candidates_Admin" />
+        <AssociationConnector Association="ELectDBModel.FK_Party_Admin" />
+        <AssociationConnector Association="ELectDBModel.FK_Candidates_Party" />
+        <AssociationConnector Association="ELectDBModel.FK_Vote_Candidates" />
+        <AssociationConnector Association="ELectDBModel.FK_Vote_Party" />
+        <AssociationConnector Association="ELectDBModel.FK_Vote_Student" />
+        <EntityTypeShape EntityType="ELectDBModel.PostImage" Width="1.5" PointX="2.875" PointY="10.625" />
+        <EntityTypeShape EntityType="ELectDBModel.SaveImage" Width="1.5" PointX="0.75" PointY="10.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

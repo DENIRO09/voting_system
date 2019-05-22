@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - My ASP.NET Application</title>
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+    <link href="/Content/bootstrap-simplex.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+
+</head>
+<body>
+    <script src="/Scripts/jquery-1.12.4.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+
+
+
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">E-Lect Voting System</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                    <li><a href="/Home/Contact">Contact</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right"></ul>
+
+                <ul class="nav navbar-nav navbar-right"></ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <div class="home-content">
+        <h1 id="home">E-Lect <br /> <span>SRC Voting System</span></h1>
+    </div>
+
+    <div class="container home-body">
+
+        <div class="login-content">
+            <a href="/Login/AdminLogin" class="login">Login as Admin</a>
+            <a href="/Login/StudentLogin" class="login">Login as Student</a>
+        </div>
+
+        <div>
+            <a href="/Chart/Index" class="login">Statistics</a>
+            <a href="/PostImages/Index" class="login">View my Experience</a>
+        </div>
+
+        <hr />
+
+        <footer>
+            <p>&copy; 2017 - The D-Velopers 2.0</p>
+        </footer>
+
+    </div>
+
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+        {"appName":"Microsoft Edge","requestId":"99c2539e9d1f4c30aceeb9a0c7f0ca4b"}
+    </script>
+    <script type="text/javascript" src="http://localhost:51190/242a941262eb4cb58234746549870b55/browserLink" async="async"></script>
+    <!-- End Browser Link -->
+
+</body>
+</html>
+

@@ -1,0 +1,67 @@
+﻿@model E_Lect.Models.Student
+
+@{
+    ViewBag.Title = "STUDENT |Edit";
+
+    if (Session["Student_Number"] == null)
+    {
+        Response.Redirect("~/Login/StudentLogin");
+    }
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Create", "Students", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>My Profile</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Student_Number)
+
+        <div class="form-group">
+            <div class="form-group">
+                <img src="@Url.Action("RenderImage","Students",new { id = Model.Student_Number})" width="80" height="50" />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Student_Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <h3>Upload a Profile Picture</h3>
+                    <input type="file" name="file" required />
+                </div>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm Password" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                <h6 style="font-size:smaller; color: #c60808">*Please confirm your password.</h6>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Student_Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email Address" } })
+                @Html.ValidationMessageFor(model => model.Student_Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Student_Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+        @Html.HiddenFor(model => model.Student_Gender, new { htmlAttributes = new { @class = "form-control" } })  <br />
+        @Html.HiddenFor(model => model.Student_DOB, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.Student_Course, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.Student_YearOfStudy, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.Student_Campus, new { htmlAttributes = new { @class = "form-control" } })
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back", "Details")
+</div>
+

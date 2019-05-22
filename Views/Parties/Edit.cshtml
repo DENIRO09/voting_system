@@ -1,0 +1,74 @@
+﻿@model E_Lect.Models.Party
+
+@{
+    ViewBag.Title = "PARTY | Edit";
+    Layout = null;
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Parties", FormMethod.Post, new { onsubmit = "return SubmitFrom(this)" , enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Party</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Party_Name)
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Party_Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Party_Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Party Name" } })
+                @Html.ValidationMessageFor(model => model.Party_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <img src="@Url.Action("RenderImage","Parties",new { id = Model.Party_Name})" width="80" height="50" />
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Party_Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <h3>Upload a Profile Picture</h3>
+                <input type="file" name="file" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Party_Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Party_Description, new { htmlAttributes = new { @class = "form-control", placeholder = "Party Description" } })
+                @Html.ValidationMessageFor(model => model.Party_Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Party_NoOfMembers, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Party_Status,
+               new[] { new SelectListItem {Text="Active",Value="Active" },
+                        new SelectListItem {Text="Inactive",Value="Inactive" } },
+               "Select Status", htmlAttributes: new { @class = "form-control" })
+                
+                @Html.ValidationMessageFor(model => model.Party_Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+

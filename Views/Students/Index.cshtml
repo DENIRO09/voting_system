@@ -1,0 +1,80 @@
+﻿@model IEnumerable<E_Lect.Models.Student>
+
+@{
+    ViewBag.Title = "STUDENT |Index";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+
+
+}
+
+<h1 align="center" style="margin:50px">Voters Roll</h1>
+
+<table id="voterTable" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            @*<th>Image</th>*@
+            <th>Student Number</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>Year of Study</th>
+            <th>Campus</th>
+        </tr>
+    </thead>
+</table>
+
+<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        var Popup, dataTable;
+       $(document).ready(function () {
+           dataTable = $("#voterTable").DataTable({
+                "ajax": {
+                    "url": "/Students/GetData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    //{ "data": "Student_Image" },
+                    { "data": "Student_Number" },
+                    { "data": "Student_Gender" },
+                    {
+                        "data": "Student_DOB",
+                        "render": function (jsonDate) {
+                            var date = new Date(parseInt(jsonDate.substr(6)));
+                            var month = date.getMonth() + 1;
+                            return date.getDate() + "/" + month + "/" + date.getFullYear();
+                        }
+                    },
+                    {
+                        "data": "Student_Email",
+                        "searchable": false,
+                        "sortable": false
+                    },
+                    { "data": "Student_Course" },
+                    { "data": "Student_YearOfStudy" },
+                    { "data": "Student_Campus" },
+                ],
+                "language": {
+                    "emptyTable" : "No data found. Click on <b>Add New</b> button."
+                }
+
+            });
+       });
+
+    </script>
+}
+
+<div>
+    @Html.ActionLink("Back", "AdminHome", "Home")
+</div>

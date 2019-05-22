@@ -1,0 +1,147 @@
+﻿@model IEnumerable<E_Lect.Models.Candidate>
+@{
+    ViewBag.Title = "CANDIDATES | Index";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+<h2>Candidates List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table form">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_ID)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Image)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Name)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_StudentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Course)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_YearOfStudy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Campus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate_Status)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Candidate_TotalVotes)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Admin.Admin_Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Party.Party_Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_ID)
+            </td>
+            @*<td>
+                    @Html.DisplayNameFor(model => model.Candidate_Photo)
+                </td>*@
+
+            <td>
+                <div class="form-group">
+                    <img src="@Url.Action("RenderImage","Candidates",new { id = item.Candidate_ID})" width="80" height="50" />
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_Name)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Candidate_MidName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_StudentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_Course)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_YearOfStudy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_Campus)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate_Status)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Candidate_TotalVotes)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Admin.Admin_Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Party.Party_Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Candidate_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Candidate_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Candidate_ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Back", "AdminHome", "Home")
+</p>
+

@@ -1,0 +1,18 @@
+﻿
+
+@{
+    ViewBag.Title = "Construct";
+
+    if (Session["Student_Number"] == null)
+    {
+        Response.Redirect("~/Login/StudentLogin");
+    }
+}
+
+<h1 align="center" style="margin:50px; color:red">
+    Voting Closed!
+    <br /><span style="font-size:20px;"></span>
+</h1>
+<p>
+    @Html.ActionLink("Back", "StudentHome", "Home")
+</p>

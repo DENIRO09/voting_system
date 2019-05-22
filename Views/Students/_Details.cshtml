@@ -1,0 +1,85 @@
+﻿@model E_Lect.Models.Student
+
+@{
+    ViewBag.Title = "STUDENT | Details";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+<h2>Details</h2>
+
+<div>
+
+    <h4>Voter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Course)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Course)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_YearOfStudy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_YearOfStudy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Campus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Campus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Voted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Voted)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back", "Index", "Students")
+</p>

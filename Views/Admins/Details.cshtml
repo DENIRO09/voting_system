@@ -1,0 +1,93 @@
+﻿@model E_Lect.Models.Admin
+
+@{
+    ViewBag.Title = "ADMIN | Details";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+            <img src="@Url.Action("RenderImage","Admin",new { id = Model.Admin_Username})" width="80" height="50" />
+
+
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_MidName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_MidName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Email)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Admin_Recovery)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Admin_Recovery)
+            </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Admin_Username }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

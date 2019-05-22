@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "ADMIN | Home";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+
+
+<div>
+    <h2>Admin Home</h2>
+    <br /><br /><br /><br />
+
+    <div class="option-content">
+        <a class="option" href="/Admins/Index">All Admins</a>
+        <a class="option" href="/Parties/Index">All Parties</a>
+        @*@Html.ActionLink("All Admins", "Index", "Admins")
+            @Html.ActionLink("All Parties", "Index", "Parties", new { @class = "option" })*@
+    </div>
+
+    <div class="option-content">
+        <a class="option" href="/Candidates/Index">Candidates</a>
+        <a class="option" href="/Students/Index">Voters Roll</a>
+        @*@Html.ActionLink("Candidates", "Index", "Candidates", new { @class = "option" })
+            @Html.ActionLink("Voters Roll", "Index", "Students", new { @class = "option" })*@
+    </div>
+    <div>
+        <a href="/TotalVotes/Index">Total Votes</a> <br/><br/>
+        <a href="/Votes/EditVoteTime">Set Voting Time</a>
+        <a href="/PostImages/AdminViewIndex">Validate Images</a>
+    </div>
+
+</div>

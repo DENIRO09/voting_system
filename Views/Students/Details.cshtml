@@ -1,0 +1,101 @@
+﻿@model E_Lect.Models.Student
+
+@{
+    ViewBag.Title = "STUDENT |Details";
+
+    if (Session["Student_Number"] == null)
+    {
+        Response.Redirect("~/Login/StudentLogin");
+    }
+}
+
+<h1 align="center" style="margin:50px">My Profile</h1>
+
+<hr />
+<div>
+    <dl class="dl-horizontal">
+
+        <dt>
+
+            <img src="@Url.Action("RenderImage","Students",new { id = Model.Student_Number})" width="80" height="50" />
+
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Course)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Course)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_YearOfStudy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_YearOfStudy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Campus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Campus)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Student_Voted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Voted)
+        </dd>*@
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Student_Recovery)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Student_Recovery)
+            </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", "Students") |
+    @Html.ActionLink("Back", "StudentHome", "Home")
+</p>

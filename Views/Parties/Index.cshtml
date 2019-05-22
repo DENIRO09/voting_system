@@ -1,0 +1,152 @@
+﻿@model IEnumerable<E_Lect.Models.Party>
+
+@{
+    ViewBag.Title = "PARTY | Index";
+
+    if (Session["Admin_Username"] == null)
+    {
+        Response.Redirect("~/Login/AdminLogin");
+    }
+}
+
+<h2>Party List</h2>
+
+<a class="btn btn-success" style="margin-bottom:10px" onclick="PopupForm('@Url.Action("Create","Parties")')"><i class="fa fa-plus"></i> Add New</a>
+<table id="partyTable" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            @*<th>Image</th>*@
+            <th>Name</th>
+            <th>Description</th>
+            <th>Number of Candidates</th>
+            <th>Status</th>
+            <th>Admin Incharge</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        var Popup, dataTable;
+       $(document).ready(function () {
+           dataTable = $("#partyTable").DataTable({
+                "ajax": {
+                    "url": "/Parties/GetData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    //{
+                    //    "data": "Party_Image",
+                    //    "searchable": false,
+                    //    "sortable": false
+                    //},
+                    { "data": "Party_Name" },
+                    { "data": "Party_Description" },
+                    { "data": "Party_NoOfCandidates" },
+                    {
+                        "data": "Party_Status",
+                        "searchable": false
+                    },
+                    { "data": "Admin_Username" },
+                    {
+                        "data": "Party_Name", "render": function (data) {
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("Edit", "Parties")/"+ data +"')><i class= 'fa fa-pencil'></i> Edit</a> <a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+ data +")><i class= 'fa fa-trash'></i> Delete</a>";
+                    },
+                        "orderable": false,
+                        "searchable": false,
+                        "width" : "150px"
+                    }
+                ],
+                "language": {
+                    "emptyTable" : "No data found. Click on <b>Add New</b> button."
+                }
+
+            });
+       });
+
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                formDiv.html(response);
+
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    title: "Fill Party Details",
+                    height: 500,
+                    width: 700,
+                    close: function () {
+                        Popup.dialog('destroy').remove();
+                    }
+                });
+            });
+        }
+
+        function SubmitFrom(form) {
+            $.validator.unobtrusive.parse(form);
+
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+                        }
+                        else if (data.error) {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "error"
+                            })
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+
+       function Delete(id) {
+           if (confirm("Are you sure you want to delete this Party?"))
+           {
+               $.ajax({
+                   type: "POST",
+                   url: '@Url.Action("Delete", "Parties")/' + id,
+                   success: function (data) {
+                       if (data.success)
+                       {
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                           })
+                       }
+                   }
+               });
+           }
+       }
+    </script>
+}
+
+<p>
+    @Html.ActionLink("Back", "AdminHome", "Home")
+</p>
